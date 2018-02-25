@@ -5,13 +5,13 @@ import normaliseCss from './util/normaliseCss'
 
 describe('penthouse core tests', () => {
   function staticServerFileUrl (file) {
-    return 'file://' + path.join(process.env.PWD, 'test', 'static-server', file)
+    return 'file://' + path.join(__dirname, 'static-server', file)
   }
   var page1FileUrl = staticServerFileUrl('page1.html')
 
   it('should match exactly the css in the yeoman test', () => {
-    var yeomanFullCssFilePath = path.join(process.env.PWD, 'test', 'static-server', 'yeoman-full.css')
-    var yeomanExpectedCssFilePath = path.join(process.env.PWD, 'test', 'static-server', 'yeoman-medium--expected.css')
+    var yeomanFullCssFilePath = path.join(__dirname, 'static-server', 'yeoman-full.css')
+    var yeomanExpectedCssFilePath = path.join(__dirname, 'static-server', 'yeoman-medium--expected.css')
     var yeomanExpectedCss = read(yeomanExpectedCssFilePath).toString()
 
     return penthouse({

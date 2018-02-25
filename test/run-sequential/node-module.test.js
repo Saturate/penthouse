@@ -7,12 +7,12 @@ import chromeProcessesRunning from '../util/chromeProcessesRunning'
 import normaliseCss from '../util/normaliseCss'
 
 function staticServerFileUrl (file) {
-  return 'file://' + path.join(process.env.PWD, 'test', 'static-server', file)
+  return 'file://' + path.resolve(__dirname, '../', 'static-server', file)
 }
 
 describe('extra tests for penthouse node module', () => {
   var page1FileUrl = staticServerFileUrl('page1.html')
-  var page1cssPath = path.join(process.env.PWD, 'test', 'static-server', 'page1.css')
+  var page1cssPath = path.resolve(__dirname, '../', 'static-server', 'page1.css')
 
   // the last two tests are using the unstableKeepBrowserAlive property,
   // which expects to continue to use the same browser forever.

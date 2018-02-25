@@ -4,7 +4,7 @@ import penthouse from '../../lib/'
 
 
 function staticServerPerfHtmlUrl (file) {
-  return 'file://' + path.join(process.env.PWD, 'test', 'static-server', 'perf', file)
+  return 'file://' + path.resolve(__dirname, '../', 'static-server', 'perf', file)
 }
 
 const FIXTURES = [
@@ -43,7 +43,7 @@ describe('performance tests for penthouse', () => {
       const start = Date.now()
       return penthouse({
         url: staticServerPerfHtmlUrl(`${name}.html`),
-        css: path.join(process.env.PWD, 'test', 'static-server', 'perf', `${name}.css`),
+        css: path.resolve(__dirname, '../',  'static-server', 'perf', `${name}.css`),
         unstableKeepBrowserAlive: true,
         puppeteer: { getBrowser: () => browserPromise }
       })
